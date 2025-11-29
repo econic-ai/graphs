@@ -1,0 +1,22 @@
+# Nested package repositories (each has its own git repo)
+graph-core/
+graph-3d/
+graph-morph/
+graph-ui/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+pkg/
+target/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
