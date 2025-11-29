@@ -1,0 +1,46 @@
+# Econic Graphs Monorepo
+
+This workspace contains the source code and documentation for a multi-layered framework enabling developers to build interactive 3D graph visualisations in the browser.
+
+## Project Structure
+
+```
+graphs/
+├── docs/                    # Project documentation (ONLY place for docs)
+│   └── Project-scope.md     # Architecture and API specifications
+├── graph-core/              # Rust/WASM - WebGPU rendering engine
+├── graph-3d/                # TypeScript - Buffer orchestration & overlays
+├── graph-morph/             # TypeScript - Meta-graph & transitions
+└── graph-ui/                # TypeScript - Framework bindings (Future)
+```
+
+## Documentation Rules
+
+- **All documentation must be placed in `/docs`** - this is the single source of truth for project documentation
+- Do not create README files in subprojects beyond the minimal project-specific README
+- API documentation belongs in `/docs`, not scattered across packages
+- Each package README should be brief and link to `/docs` for detailed information
+
+## Package Dependencies (Layered Architecture)
+
+```
+Layer 4: graph-ui      → graph-morph
+Layer 3: graph-morph   → graph-3d  
+Layer 2: graph-3d      → graph-core
+Layer 1: graph-core    → (WebGPU)
+```
+
+## Development Notes
+
+- `graph-core` is Rust/WASM - use `cargo` and `wasm-pack`
+- `graph-3d`, `graph-morph`, `graph-ui` are TypeScript - use `pnpm`
+- Each package is a separate git repository
+- Coordinate system uses Normalised Device Coordinates (NDC): -1 to 1 on each axis
+
+## Package Naming
+
+NPM packages use the `@econic/` scope:
+- `@econic/graph-core`
+- `@econic/graph-3d`
+- `@econic/graph-morph`
+- `@econic/graph-ui`
